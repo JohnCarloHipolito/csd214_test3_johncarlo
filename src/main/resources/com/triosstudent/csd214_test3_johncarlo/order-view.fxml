@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" prefWidth="640.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.triosstudent.csd214_test3_johncarlo.OrderController">
+
+    <padding>
+        <Insets bottom="40.0" left="20.0" right="20.0" top="40.0"/>
+    </padding>
+    <HBox alignment="CENTER">
+        <Label text="Pizza Ordering App" style="-fx-font-size: 20; -fx-font-weight: bold"/>
+    </HBox>
+    <GridPane alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" prefWidth="150.0"/>
+            <ColumnConstraints prefWidth="300.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+        </rowConstraints>
+        <Label text="Order Id:    "/>
+        <TextField fx:id="orderIdTF" maxWidth="250.0" GridPane.columnIndex="1"/>
+        <Label text="Customer Name:    " GridPane.rowIndex="1"/>
+        <TextField fx:id="customerNameTF" maxWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label text="Mobile Number:    " GridPane.rowIndex="2"/>
+        <TextField fx:id="mobileNumberTF" maxWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label text="Pizza Size:    " GridPane.rowIndex="3"/>
+
+        <HBox alignment="CENTER_LEFT" maxWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <fx:define>
+                <ToggleGroup fx:id="pizzaSizeTG"/>
+            </fx:define>
+            <padding>
+                <Insets left="5" right="5"/>
+            </padding>
+            <RadioButton toggleGroup="$pizzaSizeTG" text="S"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <RadioButton toggleGroup="$pizzaSizeTG" text="M"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <RadioButton toggleGroup="$pizzaSizeTG" text="L"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <RadioButton toggleGroup="$pizzaSizeTG" text="XL"/>
+        </HBox>
+        <Label text="No. of Toppings:    " GridPane.rowIndex="4"/>
+        <TextField fx:id="numberOfToppingsTF" maxWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+    <Label fx:id="messageLbl" style="-fx-font-weight: bold"/>
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#onReadOrderAction" prefWidth="100" text="Read Order"/>
+        <Button onAction="#onCreateOrderAction" prefWidth="100" text="Create Order"/>
+        <Button onAction="#onUpdateOrderAction" prefWidth="100" text="Update Order"/>
+        <Button onAction="#onDeleteOrderAction" prefWidth="100" text="Delete Order"/>
+    </HBox>
+    <TableView fx:id="pizzaOrderTbl" maxWidth="600" maxHeight="300">
+        <columns>
+            <TableColumn fx:id="idCol" text="Order&#10;ID"/>
+            <TableColumn fx:id="customerNameCol" text="Customer&#10;Name" prefWidth="160"/>
+            <TableColumn fx:id="mobileNumberCol" text="Mobile&#10;Number" prefWidth="120"/>
+            <TableColumn fx:id="pizzaSizeCol" text="Pizza&#10;Size"/>
+            <TableColumn fx:id="noOfToppingsCol" text="No. of&#10;Toppings"/>
+            <TableColumn fx:id="totalBillCol" text="Total&#10;Bill"/>
+        </columns>
+    </TableView>
+</VBox>
